@@ -19,6 +19,7 @@
     url={{couchdb_url}}
     dest=/tmp/{{couchdb_tgz}}
     mode=0644
+    validate_certs=No
 
 - name: unarchive...
   become: yes
