@@ -9,7 +9,7 @@
 - name: deps
   become: yes
   become_user: root
-  package: name={{item}} state=present
+  package: name={{item}} state=present update_cache=yes
   with_items: '{{couchdb_dep_pkgs}}'
 
 - name: download...
@@ -36,7 +36,7 @@
   args:
     chdir: /opt/{{couchdb_name}}
     creates: /opt/{{couchdb_name}}/rel/couchdb.config
-    
+
 - name: build...
   become: yes
   become_user: root
@@ -59,4 +59,3 @@
     src={{couchdb_install_parent_dir}}/{{couchdb_name}}
     dest={{couchdb_install_parent_dir}}/couchdb
     state=link
-
